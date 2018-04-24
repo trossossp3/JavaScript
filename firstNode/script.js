@@ -1,10 +1,15 @@
-var express = require('express');
-var app = express();
- 
-app.get('/', function(req, res) {
- res.send('Hello Express');
-});
- 
-app.listen(3000, function() {
- console.log("Server is running at 3000 port!");
-});
+var http = require('http');
+var fs = require('fs');
+
+//var dt = require('./myfirstmodule');
+//res.write("The date and time are currently: " + dt.myDateTime());
+http.createServer(function (req, res) {
+    fs.readFile('index.html', function (err, data) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(data);
+        res.end();
+    });
+
+}).listen(8080);
+
+// type locahost: with the number ex. 8080
