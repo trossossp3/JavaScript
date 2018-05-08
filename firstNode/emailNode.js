@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
 var CronJob = require('cron').CronJob;
-var to = 'trossos@bayviewglen.ca';
+var to = 'trossos@bayviewglen';
 
 var transporter = nodemailer.createTransport({
 
