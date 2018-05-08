@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
 var CronJob = require('cron').CronJob;
-var to = 'trossos@bayviewglen';
+var to = 'jnarayan@bayviewglen.ca';
 
 var transporter = nodemailer.createTransport({
 
@@ -16,7 +16,7 @@ var mailOptions = {
     from: 'nodejs72@gmail.com',
     to: to,
     subject: 'dw bout it',
-    html: '<h1><b1> Hello Commrad</h1></b1> <p>you have been selected for a free oportunity. fly to russia to get your prize</p>',
+    html: '<h1><b1> Hello Jusin</h1></b1> <p>I made this an automated email for u mon-fri at 1: 45 u might not get it if the server isnt on. its only one a day so ull be ok. was u get this plz respond to my bvg email</p>',
     /*attachments: [
         {   // file on disk as an attachment
             filename: 'geoIsp2.docx',
@@ -24,15 +24,17 @@ var mailOptions = {
         }
     ]*/
 };
-
-new CronJob('* * * * * *', function () {
+var numberOfEmails = 0;
+new CronJob('00 45 13 * * 1-5', function () {
 
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
         } else {
-            console.log('Email sent: ' + info.response);
+            console.log('Email sent: ' + "You've sent" + numberOfEmails + info.response);
+
         }
     });
+    numberOfEmails++;
 }, null, true, 'America/New_York');
 
