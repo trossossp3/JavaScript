@@ -13,11 +13,11 @@ var transporter = nodemailer.createTransport({
 });
 
 var mailOptions = {
-    from: 'nodejs72@gmail.com',
+    from: 'not trent',
     to: to,
     
     subject: 'email every second',
-    text: 'Email sent at:  ' + dt.myDateTime() + "\n" + 'how many emails is this', 
+    text: 'civies friday', 
   
    
     //html: '<h1><b1> Hello Jusin</h1></b1> <p>I made this an automated email for u mon-fri at 9: 30 u might not get it if the server isnt on. its only one a day so ull be ok. was u get this plz respond to my bvg email</p>',
