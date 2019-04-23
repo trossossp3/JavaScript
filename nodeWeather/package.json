@@ -9,7 +9,7 @@
   "author": "Trent Rossos",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
     "dark-sky-api": "^0.6.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",

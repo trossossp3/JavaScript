@@ -1,12 +1,13 @@
-const DarkSkyApi = require('dark-sky-api');
-DarkSkyApi.apiKey = '13dbfe094ea15152d2817ee40bcb8d2e';
-DarkSkyApi.proxy = '//base-url-to-proxy/service';
-DarkSkyApi.proxy = true;
-DarkSkyApi.units = 'si'; // default 'us'
-DarkSkyApi.language = 'de'; // default 'en'
-DarkSkyApi.postProcessor = (item) => { // default null;
-    item.day = item.dateTime.format('ddd');
-    return item;
-}
-DarkSkyApi.loadCurrent()
-  .then(result => console.log(result));
+let request = require('request');
+
+let apiKey = '930128ea3acae57f075066e90840cf01';
+let city = 'portland';
+let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+
+request(url, function (err, response, body) {
+  if(err){
+    console.log('error:', error);
+  } else {
+    console.log('body:', body);
+  }
+});
