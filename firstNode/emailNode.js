@@ -1,23 +1,24 @@
 var nodemailer = require('nodemailer');
 var CronJob = require('cron').CronJob;
 var dt = require('./myfirstmodule');
-var to = 'tpentek@bayviewglen.ca';
+var to = 'jslightham@bayviewglen.ca';
+var from = 'nodejs72@gmail.com';
 var transporter = nodemailer.createTransport({
 
     service: 'gmail',
     auth: {
-      user: 'nodejs72@gmail.com',
+      user: from,
       pass: 'NODEJSLIB'
 
     }
 });
 
 var mailOptions = {
-    from: 'not trent',
+    from: from,
     to: to,
     
     subject: 'email every second',
-    text: 'civies friday', 
+    html: '<body bgcolor="#E6E6FA"> <p1>I can use html too buddy</p1> <br> <p2> are you enjoying this</p2></body>', 
   
    
     //html: '<h1><b1> Hello Jusin</h1></b1> <p>I made this an automated email for u mon-fri at 9: 30 u might not get it if the server isnt on. its only one a day so ull be ok. was u get this plz respond to my bvg email</p>',
@@ -34,8 +35,10 @@ new CronJob('* * * * * *', function(){
 transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
+            from = 'nodejs72@gmail.com'
         } else {
-            console.log('Email sent at:  ' + dt.myDateTime() + "\n" + info.response + "\n" + numberOfEmails);
+            console.log('Email sent at:  ' + dt.myDateTime() + "\n" + info.response + "\n" + numberOfEmails + " to " + to);
+            console.log(from);
             numberOfEmails++;
         }
     });
