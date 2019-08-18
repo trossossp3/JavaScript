@@ -1,13 +1,20 @@
-let request = require('request');
+const express = require('express');
+const bodyParser = require('body-parser');
+const request = require('request');
+const app = express()
 
-let apiKey = '930128ea3acae57f075066e90840cf01';
-let city = 'portland';
-let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+const apiKey = '930128ea3acae57f075066e90840cf01';
 
-request(url, function (err, response, body) {
-  if(err){
-    console.log('error:', error);
-  } else {
-    console.log('body:', body);
-  }
-});
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs')
+
+app.get('/', function (req, res) {
+  res.render('index', {weather: null, error: null});
+})
+
+app.post('/', function (req, res) {
+  let city = req.body.city;
+  let url = `https://samples.openweathermap.org/data/2.5/forecast?q=${city},us&mode=xml&appid=${apiKey}`;
+})
+console.log(`Its ${weather.temp} degrees in ${weather.name}!`);

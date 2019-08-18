@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express()
 
-const apiKey = 'e2d1c1e3708d350b3106c5fe39f23858';
+const apiKey = '930128ea3acae57f075066e90840cf01';
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
   let city = req.body.city;
-  let url = `http://api.openweathermap.org/data/2.5/weather?q=${Toronto}&units=imperial&appid=${5494f315c6792708ba9ecb07e767167a}`;
+  let url = `https://samples.openweathermap.org/data/2.5/forecast?q=${city},us&mode=xml&appid=${apiKey}`;
 
   request(url, function (err, response, body) {
     if(err){
@@ -25,13 +25,13 @@ app.post('/', function (req, res) {
       if(weather.main == undefined){
         res.render('index', {weather: null, error: 'Error, please try again'});
       } else {
-        let weatherText = `Its ${weather.main.temp} degrees in ${weather.name}!`;
+        let weatherText = `Its ${weather.temp} degrees in ${weather.name}!`;
         res.render('index', {weather: weatherText, error: null});
       }
     }
   });
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(8080, function () {
+  console.log('Example app listening on port 8080!')
 })
